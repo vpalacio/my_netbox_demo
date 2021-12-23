@@ -8,7 +8,7 @@
       type: "{{ item.type }}"
     state: present
   loop: "{{ interfaces }}"
-  run_once: yes
+  #run_once: yes
 
 - name: Create console template 
   netbox.netbox.netbox_console_port_template:
@@ -20,7 +20,7 @@
       type: "{{ item.type }}"
     state: present
   loop: "{{ console_ports }}"
-  run_once: yes
+  #run_once: yes
 
 - name: Create power port template
   netbox.netbox.netbox_power_port_template:
@@ -31,5 +31,5 @@
       name: "{{ item.name }}"
       type: "{{ item.type }}"
     state: present
-    run_once: yes
+  #run_once: yes
   loop: "{{ power_ports }}"
