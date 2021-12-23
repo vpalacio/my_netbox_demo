@@ -1,0 +1,9 @@
+device_types:
+  - vendor: NVIDIA
+    type: MSB7800-ES2F
+    state: present
+    platform: mlnx
+  - vendor: ARISTA
+    type: DCS-7010TX-48
+    state: present
+    platform: eos

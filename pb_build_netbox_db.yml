@@ -1,0 +1,12 @@
+---
+- name: Populate NetBox DataBase
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - build_netbox_db/vars/sites.yml
+    - build_netbox_db/vars/roles.yml
+    - build_netbox_db/vars/types.yml
+    
+  tasks:
+    - import_role:
+        name: build_netbox_db
