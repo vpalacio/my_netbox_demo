@@ -1,0 +1,4 @@
+device_roles:
+  - name: Infiniband
+    color: "FF0000"
+    vm_role: true
