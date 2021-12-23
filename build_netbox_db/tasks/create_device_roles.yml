@@ -1,0 +1,12 @@
+- name: Create New Device Roles
+  netbox.netbox.netbox_device_role:
+    netbox_url: "{{ lookup('env', 'NETBOX_URL') }}"
+    netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+    data:
+      name: "{{ item.name | lower }}"
+      color: "{{ item.color }}"
+      vm_role: "{{ item.vm_role }}"
+  loop: "{{ device_roles }}"
+  register: device_roles
+  run_once: yes
+  tags: device_roles

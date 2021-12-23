@@ -1,0 +1,11 @@
+- name: "Create device types"
+  netbox.netbox.netbox_device_type:
+    netbox_url: "{{ lookup('env', 'NETBOX_URL') }}"
+    netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+    data:
+      manufacturer: "{{ item.vendor | lower }}"
+      model: "{{ item.type | lower }}"
+  loop: "{{ device_types }}"  
+  run_once: yes
+  register: device_types
+  tags: device_types

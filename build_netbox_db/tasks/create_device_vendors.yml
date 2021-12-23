@@ -1,0 +1,10 @@
+- name: "Create Device Vendors"
+  netbox.netbox.netbox_manufacturer:
+    netbox_url: "{{ lookup('env', 'NETBOX_URL') }}"
+    netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+    data:
+      name: "{{ device }}"
+  loop: "{{ device_types | map(attribute='vendor') | list | unique }}"
+  loop_control:
+    loop_var: device
+  run_once: yes

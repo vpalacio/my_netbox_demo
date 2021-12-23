@@ -1,0 +1,14 @@
+- name: Create NetBox Sites
+  netbox_site:
+    netbox_url: "{{ lookup('env', 'NETBOX_URL') }}"
+    netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+    data:
+      name: "{{ item.name | lower }}"
+      description: "{{ item.description | default(omit) }}"
+      physical_address: "{{ item.location | default(omit) }}"
+    state: "{{ item.state | lower }}"
+  loop: "{{ sites }}" 
+  when: sites is defined
+  run_once: yes
+  register: netbox_sites
+  tags: netbox_sites

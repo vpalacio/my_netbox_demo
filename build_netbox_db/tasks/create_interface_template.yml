@@ -1,0 +1,35 @@
+- name: Create interface template
+  netbox.netbox.netbox_device_interface_template:
+    netbox_url: "{{ lookup('env', 'NETBOX_URL') }}"
+    netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+    data:
+      device_type: "{{ model | lower }}"
+      name: "{{ item.name }}"
+      type: "{{ item.type }}"
+    state: present
+  loop: "{{ interfaces }}"
+  run_once: yes
+
+- name: Create console template 
+  netbox.netbox.netbox_console_port_template:
+    netbox_url: "{{ lookup('env', 'NETBOX_URL') }}"
+    netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+    data:
+      device_type: "{{ model | lower }}"
+      name: "{{ item.name }}"
+      type: "{{ item.type }}"
+    state: present
+  loop: "{{ console_ports }}"
+  run_once: yes
+
+- name: Create power port template
+  netbox.netbox.netbox_power_port_template:
+    netbox_url: "{{ lookup('env', 'NETBOX_URL') }}"
+    netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+    data:
+      device_type: "{{ model | lower }}"
+      name: "{{ item.name }}"
+      type: "{{ item.type }}"
+    state: present
+    run_once: yes
+  loop: "{{ power_ports }}"
