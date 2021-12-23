@@ -1,0 +1,9 @@
+sites:
+  - name: D1
+    description: "Secondary"
+    location: someplace 
+    state: present
+  - name: D2
+    description: "PRIMARY"
+    location: somewhere
+    state: present
