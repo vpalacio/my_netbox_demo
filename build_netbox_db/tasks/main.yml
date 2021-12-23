@@ -1,0 +1,21 @@
+---
+# tasks file for build_netbox_db
+- name: Create NetBox Sites
+  include_tasks: create_netbox_sites.yml
+  tags: netbox_sites
+
+- name: Create NetBox Device Vendors
+  include_tasks: create_device_vendors.yml
+  tags: device_vendors
+
+- name: Create NetBox Platforms
+  include_tasks: create_netbox_platforms.yml
+  tags: platforms
+
+- name: Create NetBox Device Roles
+  include_tasks: create_device_roles.yml
+  tags: device_roles
+
+- name: Create NetBox Device Types
+  include_tasks: create_device_types.yml
+  tags: device_types
